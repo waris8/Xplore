@@ -15,7 +15,7 @@ public class Event {
     private String eventDescription;
     private Address eventVenue;
     private LocalDateTime eventDate;
-//    private String eventCreatedBy;
+    private EventType eventType;
     private List<String> eventImages;
     private int eventMinimumAge;
     private Gender eventGender;
@@ -27,19 +27,3 @@ public class Event {
     private String spaceId;
 
 }
-
-//eventName- string
-//eventDescription - text
-//eventVenue - Location
-//eventDate - date
-//eventCreatedBy - id
-//list<images> eventImage
-//eventMinimumAge - int
-//eventGender - ENUM
-//list<artist> - artist
-//isEventAvailable = boolean
-//Capacity = int
-//seatAvailable = boolean
-//List<metadata> metadata
-//eventLike =
-//spaceId = string
