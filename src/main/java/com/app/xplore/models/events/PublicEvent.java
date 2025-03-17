@@ -1,5 +1,7 @@
 package com.app.xplore.models.events;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -7,9 +9,11 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Entity
 public class PublicEvent extends Event{
     private List<Artist> artists;
     private double price;
+    @ManyToOne
     private Organiser organiser;
 
     public PublicEvent() {
