@@ -1,5 +1,6 @@
 package com.app.xplore.service.rooms;
 
+import com.app.xplore.models.User;
 import com.app.xplore.models.rooms.Room;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,8 @@ public interface roomsInterface {
     List<Room> getPublicRooms();
 
     List<Room> getRoomsByCreator(String creatorId);
+
+    List<User> getAllUsersInRoom(String roomId);
 
     // Update
     Room updateRoom(String roomId, Room room);
