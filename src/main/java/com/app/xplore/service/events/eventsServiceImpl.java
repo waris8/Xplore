@@ -2,7 +2,10 @@ package com.app.xplore.service.events;
 
 import com.app.xplore.models.events.Event;
 import com.app.xplore.models.events.EventType;
+import com.app.xplore.models.rooms.Room;
 import com.app.xplore.repository.events.EventRepository;
+import com.app.xplore.service.rooms.roomsServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,11 +23,22 @@ public class eventsServiceImpl implements eventsInterface {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private roomsServiceImpl roomsService;
+
     @Override
     public Event createEvent(Event event) {
         event.setEventCreatedDate(LocalDateTime.now());
         event.setEventUpdatedDate(LocalDateTime.now());
-        return eventRepository.save(event);
+
+        Event createdEvent = eventRepository.save(event);
+
+        if (event.getRoomId() != null) {
+            Room room = new Room(createdEvent, event.getRoomId());
+            roomsService.createRoom(room);
+        }
+
+        return createdEvent;
     }
 
     @Override
@@ -74,7 +88,7 @@ public class eventsServiceImpl implements eventsInterface {
             updatedEvent.setCapacity(event.getCapacity());
             updatedEvent.setAvailableSeats(event.getAvailableSeats());
             updatedEvent.setAvailable(event.isAvailable());
-            updatedEvent.setEventMetadata(event.getEventMetadata());
+//            updatedEvent.setEventMetadata(event.getEventMetadata());
             updatedEvent.setRoomId(event.getRoomId());
             updatedEvent.setEventUpdatedDate(LocalDateTime.now());
             return eventRepository.save(updatedEvent);

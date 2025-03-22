@@ -9,10 +9,7 @@ public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String likeId;
-
-    @OneToOne
     private String userId;
 
-    @OneToOne
     private String parentId;
 }

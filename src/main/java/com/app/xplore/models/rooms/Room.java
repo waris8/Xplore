@@ -31,30 +31,33 @@ public class Room {
     private boolean active;
     private Integer capacity;
     private Integer members;
-    private Map<String, String> roomMetadata;
+//    private Map<String, String> roomMetadata;
     private String roomCreatedBy;
     private String eventId;
     private boolean isPrivate;
 
-    // Default constructor
-    public Room() {
-    }
-
     // Constructor to create a room from an event
     public Room(Event event, String creatorId) {
+        if (event == null) {
+            throw new IllegalArgumentException("Event cannot be null");
+        }
+        if (creatorId == null || creatorId.trim().isEmpty()) {
+            throw new IllegalArgumentException("Creator ID cannot be null or empty");
+        }
+
         this.roomName = event.getEventName();
         this.roomDescription = event.getEventDescription();
         this.roomCreatedDate = LocalDateTime.now();
         this.roomExpiryDate = event.getEventDate();
-        this.roomType = RoomType.EVENT; // Assuming EVENT is a valid RoomType
+        this.roomType = RoomType.EVENT;
         this.roomMinimumAge = event.getEventMinimumAge();
         this.roomGender = event.getEventGender();
         this.active = event.isActive();
         this.capacity = event.getCapacity();
         this.members = event.getAvailableSeats();
-        this.roomMetadata = event.getEventMetadata();
+//        this.roomMetadata = event.getEventMetadata();
         this.roomCreatedBy = creatorId;
         this.eventId = event.getEventId();
-        this.isPrivate = false; // Default to public room
+        this.isPrivate = false;
     }
 }

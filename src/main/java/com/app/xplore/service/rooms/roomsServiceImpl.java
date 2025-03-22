@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class roomsServiceImpl implements roomsInterface {
 
     @Autowired
@@ -87,7 +86,7 @@ public class roomsServiceImpl implements roomsInterface {
             updatedRoom.setActive(room.isActive());
             updatedRoom.setCapacity(room.getCapacity());
             updatedRoom.setMembers(room.getMembers());
-            updatedRoom.setRoomMetadata(room.getRoomMetadata());
+//            updatedRoom.setRoomMetadata(room.getRoomMetadata());
             updatedRoom.setRoomCreatedBy(room.getRoomCreatedBy());
             updatedRoom.setEventId(room.getEventId());
             updatedRoom.setPrivate(room.isPrivate());

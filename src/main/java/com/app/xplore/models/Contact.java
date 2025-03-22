@@ -1,9 +1,6 @@
 package com.app.xplore.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -14,6 +11,8 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String contactId;
+
+    @OneToOne
     private Address address;
     private String email;
     private List<Long> contactNo;

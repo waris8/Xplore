@@ -31,7 +31,12 @@ public class Event {
     private Integer capacity;
     private Integer availableSeats;
     private boolean isAvailable;
-    private Map<String, String> eventMetadata;
+
+//    @ElementCollection
+//    @CollectionTable(name = "event_metadata", joinColumns = @JoinColumn(name = "event_id"))
+//    @MapKeyColumn(name = "meta_key")
+//    @Column(name = "meta_value")
+//    private Map<String, String> eventMetadata;
     private String roomId;
 
     @CreationTimestamp
