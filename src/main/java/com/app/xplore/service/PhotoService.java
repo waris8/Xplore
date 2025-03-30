@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Response;
 
@@ -45,6 +47,11 @@ public class PhotoService {
         photo.setFileUrl(fileUrl);
         photoRepository.save(photo);
 
-        return fileUrl;
+        return fileName;
+    }
+
+    public byte[] getPhoto(String id) throws IOException {
+        GetObjectRequest getObjectRequest = GetObjectRequest.builder().bucket(bucketName).key(id).build();
+        return s3Client.getObject(getObjectRequest, ResponseTransformer.toBytes()).asByteArray();
     }
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "likes")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
