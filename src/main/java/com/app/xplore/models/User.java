@@ -1,14 +1,18 @@
 package com.app.xplore.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Getter
+@Setter
+@ToString(exclude = {"contact"}) // Exclude relationships to prevent circular references
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,7 +27,8 @@ public class User {
     private boolean isVerified;
     private UserType userType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Contact contact;
 
     public User() {
