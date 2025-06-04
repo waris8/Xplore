@@ -60,7 +60,7 @@ logs/
 Thumbs.db
 
 # Maven wrapper
-!.mvn/wrapper/maven-wrapper.jar
+#!.mvn/wrapper/maven-wrapper.jar
 
 # Application properties for local development
 /src/main/resources/application-local.yml
