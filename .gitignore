@@ -1,8 +1,7 @@
 HELP.md
 target/
 .github
-.mvn
-#!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -60,7 +59,6 @@ logs/
 Thumbs.db
 
 # Maven wrapper
-#!.mvn/wrapper/maven-wrapper.jar
 
 # Application properties for local development
 /src/main/resources/application-local.yml
