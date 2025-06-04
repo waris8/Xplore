@@ -31,3 +31,49 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+*.properties
+*.yml
+
+# Database
+*.db
+*.h2.db
+*.h2.db.mv.db
+*.h2.trace.db
+
+# Docker
+.docker/
+
+# Application specific
+/src/main/resources/static/uploads/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Application properties for local development
+/src/main/resources/application-local.yml
+
+# Test reports
+**/surefire-reports/
+**/failsafe-reports/
+**/test-results/
+**/test-report/
+
+# Git
+.git-credentials
+.git/
+
+# Others
+*.bak
+*.swp
+*~
