@@ -2,36 +2,37 @@ package com.app.xplore.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedDate;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "users")
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString(exclude = {"contact"}) // Exclude relationships to prevent circular references
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "user_id")
     private String userId;
-    private String userName;
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-    private boolean isActive;
-    private String imageUrl;
-    private boolean isVerified;
-    private UserType userType;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @Column(nullable = false, unique = true)
+    private String userName;
+
+    private String imageUrl;
+    
+    private boolean isVerified = false;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_type", nullable = false)
+    private UserType userType = UserType.USER;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "contact_id")
     @ToString.Exclude
     private Contact contact;
-
-    public User() {
-        this.setUserType(UserType.USER);
-    }
+    
+    // Additional constructors, methods can be added here if needed
 }

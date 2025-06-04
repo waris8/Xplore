@@ -1,25 +1,33 @@
 package com.app.xplore.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Table(name = "addresses")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "address_id")
     private String addressId;
-    private String address;
-    private String city;
-    private String state;
-    private String pin;
-    private String country;
 
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private String state;
+
+    @Column(nullable = false, length = 10)
+    private String pin;
+
+    @Column(nullable = false)
+    private String country;
 }

@@ -1,2 +1,80 @@
-/mvnw text eol=lf
+# Auto detect text files and normalize line endings to LF
+* text=auto eol=lf
+
+# Force Windows line endings for Windows-specific files
 *.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Force Unix line endings for shell scripts
+*.sh text eol=lf
+
+# Binary files that should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.jar binary
+*.class binary
+*.so binary
+*.dll binary
+*.exe binary
+*.dylib binary
+
+# Documentation
+*.md text
+*.txt text
+*.adoc text
+*.asciidoc text
+
+# Source code
+*.java text
+*.xml text
+*.properties text
+*.yml text
+*.yaml text
+*.json text
+*.html text
+*.css text
+*.js text
+*.ts text
+*.sql text
+*.gradle text
+
+# Git files
+.gitattributes export-ignore
+.gitignore export-ignore
+.gitmodules export-ignore
+
+# Maven
+pom.xml text
+mvnw text eol=lf
+mvnw.cmd text eol=crlf
+.mvn/** text eol=lf
+
+# IDE specific files
+.idea/** export-ignore
+*.iml export-ignore
+*.ipr export-ignore
+*.iws export-ignore
+.vscode/** export-ignore
+
+# Build files
+target/ export-ignore
+build/ export-ignore
+out/ export-ignore
+bin/ export-ignore
+
+# Logs
+*.log export-ignore
+
+# Local configuration files
+*.local export-ignore
+*.env export-ignore
+*.properties export-ignore
+
+# System files
+.DS_Store export-ignore
+Thumbs.db export-ignore

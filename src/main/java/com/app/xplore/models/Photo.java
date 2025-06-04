@@ -1,7 +1,12 @@
 package com.app.xplore.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "photos")
@@ -9,11 +14,21 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class Photo {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "photo_id")
+    private String photoId;
 
-    private String fileName;
-    private String fileUrl;
+    @Column(nullable = false)
+    private String url;
+
+    private String description;
+
+    @CreationTimestamp
+    @Column(name = "uploaded_at", nullable = false, updatable = false)
+    private LocalDateTime uploadedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
