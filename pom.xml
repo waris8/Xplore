@@ -11,6 +11,7 @@
 	<groupId>com.app</groupId>
 	<artifactId>xplore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>xplore</name>
 	<description>social interaction application</description>
 	<url/>
@@ -20,6 +21,15 @@
 	<developers>
 		<developer/>
 	</developers>
+	<modules>
+		<module>xplore-common</module>
+		<module>xplore-core</module>
+		<module>xplore-user</module>
+		<module>xplore-room</module>
+		<module>xplore-feed</module>
+		<module>xplore-notification</module>
+		<module>xplore-api</module>
+	</modules>
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -28,7 +38,55 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<spring-boot.version>3.2.3</spring-boot.version>
+		<lombok.version>1.18.30</lombok.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${lombok.version}</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
