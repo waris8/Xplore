@@ -1,7 +1,10 @@
-package com.app.xplore.models.events;
+package com.app.xplore.model.events;
 
+import com.app.xplore.model.events.A
+import com.app.xplore.model.ILocatable;
+import com.app.xplore.model.ISoftDeletable;
 import com.app.xplore.models.Address;
-import com.app.xplore.models.BaseEntity;
+import com.app.xplore.model.BaseEntity;
 import com.app.xplore.models.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,18 +13,20 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "events")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Event extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "event_id")
-    private String eventId;
+public class Event extends BaseEntity implements ILocatable, ISoftDeletable {
+
+    private boolean deleted;
+    private double latitude;
+    private double longitude;
 
     @Column(name = "event_name", nullable = false)
     private String eventName;
@@ -38,7 +43,7 @@ public class Event extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "event_type", nullable = false)
-    private EventType eventType;
+    private com.app.xplore.models.events.EventType eventType;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "event_images", joinColumns = @JoinColumn(name = "event_id"))
