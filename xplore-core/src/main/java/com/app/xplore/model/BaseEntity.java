@@ -1,4 +1,4 @@
-package com.app.xplore.models;
+package com.app.xplore.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -21,8 +22,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity implements IAuditable, ITenantAware, IIdentifiable<String>, Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -30,21 +32,24 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
 
+    @Column(name = "tenant_id", nullable = false, updatable = false)
+    private String tenantId;
+
     @CreatedBy
-    @Column(name = "created_by", nullable = false, length = 50, updatable = false)
+    @Column(name = "created_by", nullable = false, updatable = false)
     private String createdBy;
 
     @CreationTimestamp
-    @Column(name = "created_date", nullable = false, updatable = false)
-    private LocalDateTime createdDate = LocalDateTime.now();
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @LastModifiedBy
-    @Column(name = "last_modified_by", length = 50)
-    private String lastModifiedBy;
+    @Column(name = "updated_by")
+    private String updatedBy;
 
     @UpdateTimestamp
-    @Column(name = "last_modified_date")
-    private LocalDateTime lastModifiedDate = LocalDateTime.now();
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt = LocalDateTime.now();
 
     @Version
     @Column(name = "version")
@@ -71,9 +76,9 @@ public abstract class BaseEntity implements Serializable {
         return "BaseEntity{" +
                 "id='" + id + '\'' +
                 ", createdBy='" + createdBy + '\'' +
-                ", createdDate=" + createdDate +
-                ", lastModifiedBy='" + lastModifiedBy + '\'' +
-                ", lastModifiedDate=" + lastModifiedDate +
+                ", createdDate=" + createdAt +
+                ", lastModifiedBy='" + updatedBy + '\'' +
+                ", lastModifiedDate=" + updatedAt +
                 ", version=" + version +
                 ", isActive=" + isActive +
                 '}';

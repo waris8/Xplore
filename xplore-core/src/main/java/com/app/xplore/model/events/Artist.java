@@ -1,6 +1,6 @@
-package com.app.xplore.models.events;
+package com.app.xplore.model.events;
 
-import com.app.xplore.models.BaseEntity;
+import com.app.xplore.model.BaseEntity;
 import com.app.xplore.models.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
