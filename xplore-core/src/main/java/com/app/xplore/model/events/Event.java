@@ -1,6 +1,5 @@
 package com.app.xplore.model.events;
 
-import com.app.xplore.model.events.A
 import com.app.xplore.model.ILocatable;
 import com.app.xplore.model.ISoftDeletable;
 import com.app.xplore.models.Address;
