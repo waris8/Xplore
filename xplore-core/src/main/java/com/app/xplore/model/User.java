@@ -1,4 +1,4 @@
-package com.app.xplore.models;
+package com.app.xplore.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(exclude = {"contact"}) // Exclude relationships to prevent circular references
+@ToString // Exclude relationships to prevent circular references
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

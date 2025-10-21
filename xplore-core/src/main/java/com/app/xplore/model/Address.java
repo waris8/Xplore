@@ -1,4 +1,4 @@
-package com.app.xplore.models;
+package com.app.xplore.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -2,9 +2,9 @@ package com.app.xplore.model.events;
 
 import com.app.xplore.model.ILocatable;
 import com.app.xplore.model.ISoftDeletable;
-import com.app.xplore.models.Address;
+import com.app.xplore.model.Address;
 import com.app.xplore.model.BaseEntity;
-import com.app.xplore.models.Gender;
+import com.app.xplore.model.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,7 +42,7 @@ public class Event extends BaseEntity implements ILocatable, ISoftDeletable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "event_type", nullable = false)
-    private com.app.xplore.models.events.EventType eventType;
+    private EventType eventType;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "event_images", joinColumns = @JoinColumn(name = "event_id"))

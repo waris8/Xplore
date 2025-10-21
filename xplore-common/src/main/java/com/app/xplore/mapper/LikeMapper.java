@@ -2,7 +2,7 @@ package com.app.xplore.mapper;
 
 import com.app.xplore.dto.request.LikeRequest;
 import com.app.xplore.dto.response.LikeResponse;
-import com.app.xplore.models.Like;
+import com.app.xplore.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

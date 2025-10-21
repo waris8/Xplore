@@ -1,9 +1,8 @@
 package com.app.xplore.repository;
 
-import com.app.xplore.models.Artist;
+import com.app.xplore.model.events.Artist;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

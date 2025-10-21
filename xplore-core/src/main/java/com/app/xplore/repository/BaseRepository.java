@@ -1,6 +1,6 @@
 package com.app.xplore.repository;
 
-import com.app.xplore.models.BaseEntity;
+import com.app.xplore.model.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

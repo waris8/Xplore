@@ -1,7 +1,7 @@
 package com.app.xplore.model.events;
 
 import com.app.xplore.model.BaseEntity;
-import com.app.xplore.models.Gender;
+import com.app.xplore.model.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

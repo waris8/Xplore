@@ -2,7 +2,7 @@ package com.app.xplore.repository;
 
 
 
-import com.app.xplore.models.Photo;
+import com.app.xplore.model.Photo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

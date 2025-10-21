@@ -7,9 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -21,10 +19,9 @@ import java.util.Objects;
 @MappedSuperclass
 @Getter
 @Setter
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements IAuditable, ITenantAware, IIdentifiable<String>, Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,7 +38,7 @@ public abstract class BaseEntity implements IAuditable, ITenantAware, IIdentifia
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     @LastModifiedBy
     @Column(name = "updated_by")
@@ -49,11 +46,11 @@ public abstract class BaseEntity implements IAuditable, ITenantAware, IIdentifia
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private LocalDateTime updatedAt;
 
     @Version
     @Column(name = "version")
-    private Long version = 0L;
+    private Long version;
 
     @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
     private boolean isActive = true;

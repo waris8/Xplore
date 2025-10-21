@@ -1,9 +1,9 @@
-package com.app.xplore.models.rooms;
+package com.app.xplore.model.rooms;
 
-import com.app.xplore.models.BaseEntity;
-import com.app.xplore.models.Gender;
-import com.app.xplore.models.User;
-import com.app.xplore.models.events.Event;
+import com.app.xplore.model.BaseEntity;
+import com.app.xplore.model.Gender;
+import com.app.xplore.model.User;
+import com.app.xplore.model.events.Event;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,10 +56,6 @@ public class Room extends BaseEntity {
     private Integer members = 1;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", nullable = false)
-    private User createdBy;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;
 
@@ -92,7 +88,6 @@ public class Room extends BaseEntity {
         this.roomName = event.getEventName();
         this.roomDescription = event.getEventDescription();
         this.event = event;
-        this.createdBy = creator;
         this.membersList.add(creator);
         this.roomCreatedDate = LocalDateTime.now();
         this.roomExpiryDate = event.getEventDate();
@@ -103,8 +98,6 @@ public class Room extends BaseEntity {
         this.capacity = event.getCapacity();
         this.members = event.getAvailableSeats();
 //        this.roomMetadata = event.getEventMetadata();
-        this.roomCreatedBy = creatorId;
-        this.eventId = event.getEventId();
         this.isPrivate = false;
     }
 }

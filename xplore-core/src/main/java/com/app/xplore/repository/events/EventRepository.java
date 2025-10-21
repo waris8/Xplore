@@ -1,9 +1,7 @@
 package com.app.xplore.repository.events;
 
-import com.app.xplore.models.events.Event;
-import com.app.xplore.models.events.EventType;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.app.xplore.model.events.Event;
+import com.app.xplore.model.events.EventType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

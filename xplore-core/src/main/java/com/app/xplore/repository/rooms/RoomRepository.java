@@ -1,9 +1,7 @@
 package com.app.xplore.repository.rooms;
 
-import com.app.xplore.models.rooms.Room;
-import com.app.xplore.models.rooms.RoomType;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.app.xplore.model.rooms.Room;
+import com.app.xplore.model.rooms.RoomType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
